@@ -14,9 +14,9 @@ const ControlPanel = props => {
       <div className='flex-container-row'>
         <div className='button-group'>
           <Button.Group>
-            <Button compact>Back</Button>
-            <Button.Or />
-            <Button positive compact>
+            <Button size='mini' compact>Back</Button>
+            <Button.Or/>
+            <Button size='mini' positive compact>
               Start
             </Button>
           </Button.Group>

@@ -5,7 +5,7 @@ import passScreenSize from './hoc/passScreenSize';
 const DisplayScreenSize = props => {
     //console.log('props', props)
     return (
-        <div>
+        <div style={{alignSelf: 'flex-end'}}>
             width: {props.width} height: {props.height}
         </div>
     )

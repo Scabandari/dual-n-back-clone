@@ -6,7 +6,7 @@ const BoardSquare = ({ id, overrideStyles, lightenId }) => {
   //const { top, right, bottom, left } = borderInfo;
   return (
     <div className='square' style={overrideStyles}>
-      BoardSquare {id}
+      {id}
     </div>
   );
 };
