@@ -2,12 +2,12 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Sound from 'react-sound';
 
-function SoundPlayer({ soundIsPlaying, audioFile }) {
+function SoundPlayer({ soundIsPlaying, soundFile }) {
   return (
     <Fragment>
       {soundIsPlaying && (
         <Sound
-          url={audioFile}
+          url={soundFile}
           playStatus={Sound.status.PLAYING}
           onLoading={() => console.log('onLoading...')}
           onPlaying={() => console.log('onPlaying...')}
