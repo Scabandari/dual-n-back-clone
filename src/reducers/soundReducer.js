@@ -1,4 +1,4 @@
-import { TOGGLE_SOUND, UPDATE_SOUND_FILE } from '../actions/types';
+import { PLAY_SOUND, UPDATE_SOUND_FILE } from '../actions/types';
 import { A } from '../assets';
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
 
 export default (state=initialState, { type, payload }) => {
   switch (type) {
-    case TOGGLE_SOUND:
+    case PLAY_SOUND:
       return { ...state, soundIsPlaying: payload };
     case UPDATE_SOUND_FILE:
       return { ...state, soundFile: payload };

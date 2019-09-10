@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { GameBoard } from '../index';
+import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 import ControlPanel from './ControlPanel';
 import DisplayScreenSize from '../DisplayScreenSize';
 import { SoundPlayer } from '../../containers';
-import { toggleSound } from '../../actions/soundActions';
+import { playSound } from '../../actions/soundActions';
 import soundfile from '../../assets/a.mp3';
 import PropTypes from 'prop-types';
 import './GameSession.scss';
 
 const GameSession = props => {
   console.log('props', props);
-  const { soundIsPlaying, toggleSound, soundFile } = props;
+  const { soundIsPlaying, playSound, soundFile } = props;
   return (
     <div className='site-content'>
-      <SoundPlayer soundIsPlaying={soundIsPlaying} soundFile={soundFile}  />
-      <Button onClick={() => toggleSound(!soundIsPlaying)}>Play Sound</Button>
       <DisplayScreenSize />
+      <SoundPlayer soundIsPlaying={soundIsPlaying} soundFile={soundFile} />
       <ControlPanel />
       <GameBoard />
+      <Button style={{ marginTop: '3rem' }} onClick={() => playSound()}>
+        {/* <Link to={"/profile"}>Back</Link>  */} Back
+      </Button>
     </div>
   );
 };
@@ -33,5 +36,5 @@ const mapStateToProps = ({ sound: { soundIsPlaying, soundFile } }) => ({
 
 export default connect(
   mapStateToProps,
-  { toggleSound }
+  { playSound }
 )(GameSession);
