@@ -1,0 +1,26 @@
+// media query manager
+/*
+    0 - 600px: Phone
+    600 - 900px: Tablet portrait
+    900 - 1200px: Tablet landscape
+    [1200 - 1800px] where normal styles apply: desktop 1st approach 
+*/
+
+@mixin respond-phone {
+    @media (max-width: 600px) { @content };
+}
+
+// Could do each as above or handle all as below 
+/*
+    $breakpoint choices
+    - phone
+    - tab-port
+    - tab-land
+    - big-desktop
+*/
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 600px) { @content };
+    }
+}

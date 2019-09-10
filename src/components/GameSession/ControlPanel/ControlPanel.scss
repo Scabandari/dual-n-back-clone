@@ -1,0 +1,33 @@
+@import '../../../mixins';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  //border: solid 3px black;
+  //border-radius: 1rem;
+  padding: 0.5rem;
+  line-height: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.flex-container-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  //border: 2px red solid;
+}
+
+.button-group {
+  display: flex;
+  
+  @include respond-phone {
+    //line-height: 1.3rem;
+    //max-height: 3.3rem;
+    max-height: 2rem;
+  }
+}
+
+// .level-info{
+//     font-size: 1.5rem;
+// }

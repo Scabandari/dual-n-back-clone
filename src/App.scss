@@ -1,4 +1,29 @@
+@import 'mixins';
+
 html {
   // https://github.com/jonasschmedtmann/advanced-css-course/blob/master/Natours/final-after-S06/sass/base/_base.scss
-  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  font-size: 100%; // 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+
+  //background-color: red;
+}
+
+img, embed, object, video {
+    max-width: 100%;  // keeps content limited to less than screen size
+}
+
+// TODO tap targets > 48px min-height min-width or at least that far from each other
+
+body {
+  box-sizing: border-box;
+  @include respond-phone {
+    max-width: 37.5rem; //600px
+  }
+}
+
+.site-content-container {
+  display: flex;
+  flex-direction: column;
+//   max-width: 70rem;
+//   align-items: center;
+//   border: 2px solid red;
 }

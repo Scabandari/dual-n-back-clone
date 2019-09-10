@@ -1,0 +1,14 @@
+@import '../../mixins';
+
+.square {
+  height: 6rem;
+  width: 6rem;
+  background-color: #019172; // secondary #05f0bd
+  border: 0.3rem solid;
+
+  @include respond-phone {
+    height: 4rem;
+    width: 4rem;
+    border: 0.2rem solid;
+  }
+}

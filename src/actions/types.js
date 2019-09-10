@@ -1,0 +1,3 @@
+export const TOGGLE_SOUND = 'TOGGLE_SOUND'
+export const UPDATE_SOUND_FILE = 'UPDATE_SOUND_FILE'
+export const PLAY_SOUND = 'PLAY_SOUND'
