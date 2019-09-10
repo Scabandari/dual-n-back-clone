@@ -1,8 +1,18 @@
+@import '../../mixins';
+
 .site-content {
   align-self: center;
-  background-color: blue;
-  min-height: 22rem;
+  //background-color: blue;
+  min-width: 40rem;
+  //min-height: 10rem;
+  //min-width: 65rem;
+  //max-width: 25rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  @include respond-phone {
+    //background-color: green;
+    min-width: 18.75rem;
+    font-size: 60%;
+  }
+  //justify-content: space-between;
 }

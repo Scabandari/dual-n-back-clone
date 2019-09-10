@@ -13,7 +13,7 @@ function App() {
       <div className="site-content-container">
         <Header />
         <Switch>
-          <Route path={'/'} exact component={Landing} />
+          <Route path={'/'} exact component={GameSession} />
           <Route path={'/profile'} exact component={Profile} />
           <Route path={'/game-session'} exact component={GameSession} />
         </Switch>
