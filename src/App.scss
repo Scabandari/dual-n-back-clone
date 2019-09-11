@@ -1,4 +1,5 @@
 @import 'mixins';
+@import './utilities/variables';
 
 html {
   // https://github.com/jonasschmedtmann/advanced-css-course/blob/master/Natours/final-after-S06/sass/base/_base.scss
@@ -7,8 +8,11 @@ html {
   //background-color: red;
 }
 
-img, embed, object, video {
-    max-width: 100%;  // keeps content limited to less than screen size
+img,
+embed,
+object,
+video {
+  max-width: 100%; // keeps content limited to less than screen size
 }
 
 // TODO tap targets > 48px min-height min-width or at least that far from each other
@@ -23,7 +27,7 @@ body {
 .site-content-container {
   display: flex;
   flex-direction: column;
-//   max-width: 70rem;
-//   align-items: center;
-//   border: 2px solid red;
+
+  max-width: 40rem;  // these two bring header items closer to center of screen
+  margin: auto;
 }

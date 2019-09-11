@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { GameBoard } from '../index';
+import GameBoard from './GameBoard';
 import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 import ControlPanel from './ControlPanel';
@@ -20,7 +20,7 @@ const GameSession = props => {
       <SoundPlayer soundIsPlaying={soundIsPlaying} soundFile={soundFile} />
       <ControlPanel />
       <GameBoard />
-      <Button style={{ marginTop: '3rem' }} onClick={() => playSound()}>
+      <Button size='mini' style={{ marginTop: '3rem' }} onClick={() => playSound()}>
         {/* <Link to={"/profile"}>Back</Link>  */} Back
       </Button>
     </div>
