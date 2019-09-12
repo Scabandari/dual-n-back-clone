@@ -1,18 +1,28 @@
 @import '../../mixins';
+@import '../../utilities/variables';
 
 .site-content {
   align-self: center;
   //background-color: blue;
-  min-width: 40rem;
+  min-width: $site-width;
   //min-height: 10rem;
   //min-width: 65rem;
   //max-width: 25rem;
   display: flex;
   flex-direction: column;
+  font-weight: bold;
+
+  font-size: 1.2rem;
   @include respond-phone {
     //background-color: green;
     min-width: 18.75rem;
-    font-size: 60%;
+    font-size: 1rem;
   }
   //justify-content: space-between;
 }
+
+// font-size: 1.2rem;
+// font-weight: bold;
+// @include respond-phone {
+//     font-size: 1rem;
+// }

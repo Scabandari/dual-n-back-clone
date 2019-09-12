@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
   return (
+      
     <div className='ui secondary pointing menu'>
       <Link to='/' className='item'>
         <div className='menu-title'>Dual N-Back Clone</div>
