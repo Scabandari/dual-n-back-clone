@@ -23,9 +23,10 @@ export default ChildComponent => {
           }
 
         render() {
-            return <ChildComponent height={this.state.height} width={this.state.width}/>;
+            return <ChildComponent height={this.state.height} width={this.state.width} {...this.props} />;
         }
     }
 
     return PassScreenSize;
 };
+

@@ -6,22 +6,36 @@ import { Button } from 'semantic-ui-react';
 import ControlPanel from './ControlPanel';
 import DisplayScreenSize from '../DisplayScreenSize';
 import { SoundPlayer } from '../../containers';
+import { lightenSquare } from '../../actions/gameboardActions';
 import { playSound } from '../../actions/soundActions';
+import { useInterval } from '../../hooks';
 import soundfile from '../../assets/a.mp3';
 import PropTypes from 'prop-types';
 import './GameSession.scss';
 
+//TODO https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+
 const GameSession = props => {
   console.log('props', props);
-  const { soundIsPlaying, playSound, soundFile } = props;
+  const {
+    soundIsPlaying,
+    playSound,
+    soundFile,
+    squareNumber,
+    lightenSquare
+  } = props;
   return (
     <div className='site-content'>
       <DisplayScreenSize />
       <SoundPlayer soundIsPlaying={soundIsPlaying} soundFile={soundFile} />
       <ControlPanel />
       <GameBoard />
-      <Button size='mini' style={{ marginTop: '3rem' }} onClick={() => playSound()}>
-        {/* <Link to={"/profile"}>Back</Link>  */} Back
+      <Button
+        size=''
+        style={{ marginTop: '3rem' }}
+        onClick={() => lightenSquare(squareNumber + 1)}
+      >
+        Back {squareNumber}
       </Button>
     </div>
   );
@@ -29,12 +43,16 @@ const GameSession = props => {
 
 //GameSession.propTypes = {};
 
-const mapStateToProps = ({ sound: { soundIsPlaying, soundFile } }) => ({
+const mapStateToProps = ({
+  sound: { soundIsPlaying, soundFile },
+  gameBoard: { squareNumber }
+}) => ({
   soundIsPlaying,
-  soundFile
+  soundFile,
+  squareNumber //NEED THIS?
 });
 
 export default connect(
   mapStateToProps,
-  { playSound }
+  { playSound, lightenSquare } //NEED THIS? playSound
 )(GameSession);
