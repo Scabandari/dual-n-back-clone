@@ -1,13 +1,13 @@
 import { UPDATE_SOUND_FILE, TOGGLE_SOUND, PLAY_SOUND } from './types';
 import sleep from 'sleep-promise';
 
-// TODO using this at all????
-// export const toggleSound = bool => {
-//     return {
-//         type: TOGGLE_SOUND,
-//         payload: bool
-//     }
-// }
+export const setSound = soundFile => {
+    return {
+      type: UPDATE_SOUND_FILE,
+      payload: soundFile
+    }
+  };
+
 
 export const playSound = () => async dispatch => {
   dispatch({
