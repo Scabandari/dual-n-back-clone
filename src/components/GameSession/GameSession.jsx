@@ -18,25 +18,25 @@ import { updateGameParams } from '../../actions/gameboardActions';
 
 const GameSession = props => {
   const {
-    soundIsPlaying,
-    playSound,
+    soundIsPlaying, // Redux state
     soundFile,
-    setSound,
     squareNumber,
-    lightenSquare,
-    gameStates,
-    updateGameParams,
     gameInProgress,
     gameHasStarted,
+    gameStates,
+
+    setSound,  // Actions
+    playSound,
+    lightenSquare,
+    updateGameParams,
     stopGame
   } = props;
 
-  // todo rename incVal to reflect that it is an index
+  // Todo rename incVal to reflect that it is an index
   const [incVal, setIncVal] = useState(0); // increment through gameStates
   const [delay, setdelay] = useState(5000);
-//   const [audioRepeat, setAudioRepeat] = useState(false);
-//   const [visualRepeat, setVisualRepeat] = useState(false);
-  const [currentSquare, setCurrentSquare] = useState(10);
+
+  //const [currentSquare, setCurrentSquare] = useState(10);
   const [nBackSquares, setnBackSquares] = useState({
     1: 11,
     2: 11,
@@ -44,7 +44,7 @@ const GameSession = props => {
     4: 11,
     5: 11
   });
-  const [currentAudio, setCurrentAudio] = useState('');
+  //const [currentAudio, setCurrentAudio] = useState('');
   const [nBackAudio, setnBackAudio] = useState({
     1: '',
     2: '',
@@ -66,19 +66,16 @@ const GameSession = props => {
 
   useInterval(
     () => {
-      const {
-        audio,
-        squareNumber,
-        // audioHasRepeated,
-        // visualHasRepeated
-      } = gameStates[incVal];
+      const { audio, squareNumber: localSquareNumber } = gameStates[incVal];
+
+      // Update local state which tracks matches between current values and those nBack
       setnBackSquares({
         ...nBackSquares,
         5: nBackSquares[4],
         4: nBackSquares[3],
         3: nBackSquares[2],
         2: nBackSquares[1],
-        1: currentSquare
+        1: squareNumber  //currentSquare
       });
       setnBackAudio({
         ...nBackAudio,
@@ -86,30 +83,20 @@ const GameSession = props => {
         4: nBackAudio[3],
         3: nBackAudio[2],
         2: nBackAudio[1],
-        1: currentAudio
+        1: soundFile
       });
 
-      // Update local state
-      setCurrentSquare(squareNumber);
-      setCurrentAudio(audio);
-
-    //   setAudioRepeat(audioHasRepeated);
-    //   setVisualRepeat(visualHasRepeated);
-      //console.log('visualHasRepeated', visualHasRepeated);
-
       // Fire actions
-      setSound(audio);
-      lightenSquare(squareNumber);
+      setSound(audio);  
+      lightenSquare(localSquareNumber);
       playSound();
 
       setIncVal(incVal + 1);
-      //console.log('useInterval called');
-      //console.log('nBackSquares', nBackSquares);
     },
-    gameInProgress ? delay : null // todo delay stored in redux
+    gameInProgress ? delay : null  // null will pause interval 
   );
 
-  const nLevel = 2;  // TODO this should be controlled by user
+  const nLevel = 2; // TODO this should be controlled by user
 
   return (
     <div className='site-content'>
@@ -149,7 +136,7 @@ const mapStateToProps = ({
 }) => ({
   soundIsPlaying,
   soundFile,
-  squareNumber, //NEED THIS?
+  squareNumber, 
   gameStates,
   gameInProgress,
   gameHasStarted
