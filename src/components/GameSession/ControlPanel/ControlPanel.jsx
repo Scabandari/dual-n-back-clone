@@ -20,7 +20,8 @@ const ControlPanel = props => {
   } = props;
 
   const size = width < 600 ? 'mini' : '';
-  const buttonStyles = width < 600 ? {minWidth: '3.2rem'} : { minWidth: '6rem' };
+  const buttonStyles =
+    width < 600 ? { minWidth: '3.2rem' } : { minWidth: '6rem' };
 
   return (
     <div className='container'>
@@ -39,15 +40,26 @@ const ControlPanel = props => {
           )}
 
           {gameHasStarted && gameInProgress && (
-            <Button 
+            <Button
+              style={buttonStyles}
+              onClick={pauseGame}
+              size={size}
+              compact
+              icon='pause'
+            />
+          )}
+
+          {gameHasStarted && !gameInProgress && (
+            <Button
             style={buttonStyles}
-            onClick={startGame} 
-            size={size} 
+            onClick={startGame}
+            size={size}
             compact
-            icon='pause' />
+            icon='play'
+            />
           )}
         </div>
-        <CountDownTimer />
+        <CountDownTimer timerRunning={gameHasStarted && gameInProgress} />
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CountDownTimer = props => {
+const CountDownTimer = ({timerRunning}) => {
     return (
         <div>
-            CLOCK
+            {timerRunning ? 'Running' : 'CLOCK'}
         </div>
     )
 }

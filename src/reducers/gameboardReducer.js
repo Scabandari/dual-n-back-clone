@@ -8,7 +8,14 @@ import {
 
 const initialState = {
   squareNumber: 10, // Squares numbered 1-9, nothing originally selected
-  gameStates: [],
+  gameStates: [
+    {
+      audio: '',
+      squareNumber: 1,
+      audioHasRepeated: false,
+      visualHasRepeated: false
+    }
+  ],
   gameInProgress: false,
   gameHasStarted: false
 };

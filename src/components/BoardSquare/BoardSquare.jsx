@@ -19,7 +19,7 @@ const BoardSquare = ({ id, overrideStyles, squareNumber }) => {
 // }
 
 const mapStateToProps = ({ gameBoard: { squareNumber } }) => ({
-    squareNumber  
+    squareNumber
   });
 
 
