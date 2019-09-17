@@ -5,9 +5,6 @@
   align-self: center;
   //background-color: blue;
   min-width: $site-width;
-  //min-height: 10rem;
-  //min-width: 65rem;
-  //max-width: 25rem;
   display: flex;
   flex-direction: column;
   font-weight: bold;
@@ -18,11 +15,5 @@
     min-width: 18.75rem;
     font-size: 1rem;
   }
-  //justify-content: space-between;
 }
 
-// font-size: 1.2rem;
-// font-weight: bold;
-// @include respond-phone {
-//     font-size: 1rem;
-// }

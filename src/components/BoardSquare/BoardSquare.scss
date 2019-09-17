@@ -5,10 +5,26 @@
   width: 6rem;
   background-color: #019172; // secondary #05f0bd
   border: 0.3rem solid;
+  //opacity: .2;
+
+  &-lighten {
+    animation-name: lighten;
+    animation-duration: 3s;
+  }
 
   @include respond-phone {
     height: 4rem;
     width: 4rem;
     border: 0.2rem solid;
+  }
+}
+
+@keyframes lighten {
+  0% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
