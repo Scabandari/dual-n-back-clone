@@ -9,7 +9,7 @@
   flex-direction: column;
   font-weight: bold;
 
-  font-size: 1.2rem;
+  font-size: 1.2rem; // todo use variables
   @include respond-phone {
     //background-color: green;
     min-width: 18.75rem;
@@ -17,3 +17,14 @@
   }
 }
 
+.game-button-group {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-top: 3rem;
+}
+
+.game-button {
+  min-width: $button-width-desktop;
+  margin-top: 3rem;
+}

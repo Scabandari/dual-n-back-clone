@@ -3,7 +3,8 @@ import {
   UPDATE_GAME_STATES,
   START_GAME,
   STOP_GAME,
-  PAUSE_GAME
+  PAUSE_GAME,
+  SET_N_LEVEL
 } from '../actions/types';
 
 const initialState = {
@@ -17,7 +18,8 @@ const initialState = {
     }
   ],
   gameInProgress: false,
-  gameHasStarted: false
+  gameHasStarted: false,
+  nLevel: 2
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -32,6 +34,8 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, gameInProgress: false, gameHasStarted: false };
     case PAUSE_GAME:
       return { ...state, gameInProgress: false };
+    case SET_N_LEVEL:
+      return { ...state, nLevel: payload };
     default:
       return state;
   }

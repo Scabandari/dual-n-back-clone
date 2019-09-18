@@ -5,7 +5,8 @@ import {
   UPDATE_GAME_STATES,
   START_GAME,
   STOP_GAME,
-  PAUSE_GAME
+  PAUSE_GAME,
+  SET_N_LEVEL
 } from './types';
 
 export const lightenSquare = squareNumber => async dispatch => {
@@ -28,6 +29,13 @@ export const updateGameParams = () => {
     payload: params
   };
 };
+
+export const updateNLevel = nLevel => {
+    return {
+      type: SET_N_LEVEL,
+      payload: nLevel
+    };
+  };
 
 export const startGame = () => {
   return {

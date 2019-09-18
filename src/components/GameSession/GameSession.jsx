@@ -4,10 +4,12 @@ import GameBoard from './GameBoard';
 import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 import ControlPanel from './ControlPanel';
+import GameResults from '../GameResults';
 import DisplayScreenSize from '../DisplayScreenSize';
 import { SoundPlayer } from '../../containers';
 import { lightenSquare, stopGame } from '../../actions/gameboardActions';
 import { setSound, playSound } from '../../actions/soundActions';
+import { setGameResults } from '../../actions/gameResultActions';
 import { useInterval } from '../../hooks';
 //import soundfile from '../../assets/a.mp3';
 import PropTypes from 'prop-types';
@@ -24,17 +26,34 @@ const GameSession = props => {
     gameInProgress,
     gameHasStarted,
     gameStates,
+    nLevel,
 
-    setSound,  // Actions
+    setSound, // Actions
     playSound,
     lightenSquare,
     updateGameParams,
-    stopGame
+    stopGame,
+    setGameResults
   } = props;
 
   // Todo rename incVal to reflect that it is an index
   const [incVal, setIncVal] = useState(0); // increment through gameStates
   const [delay, setdelay] = useState(5000);
+  const [shouldHaveClickedAudio, setShouldHaveClickedAudio] = useState(false);
+  const [shouldHaveClickedVisual, setShouldHaveClickedVisual] = useState(false);
+  const [isFirstAudioClick, setFirstAudioClick] = useState(true);
+  const [isFirstVisualClick, setFirstVisualClick] = useState(true);
+
+  const [userAnswersAudio, setAnswersAudio] = useState({
+    correctPositives: 0,
+    incorrectPositives: 0,
+    incorrectNegatives: 0
+  });
+  const [userAnswersVisual, setAnswersVisual] = useState({
+    correctPositives: 0,
+    incorrectPositives: 0,
+    incorrectNegatives: 0
+  });
 
   //const [currentSquare, setCurrentSquare] = useState(10);
   const [nBackSquares, setnBackSquares] = useState({
@@ -60,12 +79,52 @@ const GameSession = props => {
 
   useEffect(() => {
     if (incVal >= gameStates.length) {
+      setGameResults({ userAnswersAudio, userAnswersVisual });
       setTimeout(stopGame, 3000);
     }
   }, [incVal]);
 
+  // Expect a click
+  useEffect(() => {
+    if (soundFile === nBackAudio[nLevel]) {
+      setShouldHaveClickedAudio(true);
+    } else {
+      setShouldHaveClickedVisual(false);
+    }
+  }, [nBackAudio, soundFile]);
+
+  // Expect a click
+  useEffect(() => {
+    if (squareNumber === nBackSquares[nLevel]) {
+      setShouldHaveClickedVisual(true);
+    } else {
+      setShouldHaveClickedVisual(false);
+    }
+  }, [nBackSquares, squareNumber]);
+
   useInterval(
     () => {
+      // Check if user should have clicked either audio or visual and update results
+      if (shouldHaveClickedAudio) {
+        const { incorrectPositives } = userAnswersAudio;
+        setAnswersAudio({
+          ...userAnswersAudio,
+          incorrectPositives: incorrectPositives + 1
+        });
+      }
+      if (shouldHaveClickedVisual) {
+        const { incorrectPositives } = userAnswersVisual;
+        setAnswersVisual({
+          ...userAnswersVisual,
+          incorrectPositives: incorrectPositives + 1
+        });
+      }
+      // reset these every interval
+      setShouldHaveClickedAudio(false);
+      setShouldHaveClickedVisual(false);
+      setFirstAudioClick(true);
+      setFirstVisualClick(true);
+
       const { audio, squareNumber: localSquareNumber } = gameStates[incVal];
 
       // Update local state which tracks matches between current values and those nBack
@@ -75,7 +134,7 @@ const GameSession = props => {
         4: nBackSquares[3],
         3: nBackSquares[2],
         2: nBackSquares[1],
-        1: squareNumber  //currentSquare
+        1: squareNumber
       });
       setnBackAudio({
         ...nBackAudio,
@@ -87,25 +146,81 @@ const GameSession = props => {
       });
 
       // Fire actions
-      setSound(audio);  
+      setSound(audio);
       lightenSquare(localSquareNumber);
       playSound();
-
       setIncVal(incVal + 1);
     },
-    gameInProgress ? delay : null  // null will pause interval 
+    gameInProgress ? delay : null // null will pause interval
   );
 
-  const nLevel = 2; // TODO this should be controlled by user
+  // const nLevel = 2; // TODO this should be controlled by user
 
+  const handleClickVisual = () => {
+    //console.log('handleClickVisual')
+    if (!isFirstVisualClick) {
+      return;
+    }
+    setFirstVisualClick(false);
+    if (squareNumber === nBackSquares[nLevel]) {
+      const { correctPositives } = userAnswersVisual;
+      setAnswersVisual({
+        ...userAnswersVisual,
+        correctPositives: correctPositives + 1
+      });
+      setShouldHaveClickedVisual(false); // no longer 'should' but 'did' click
+    } else {
+      const { incorrectNegatives } = userAnswersVisual;
+      setAnswersVisual({
+        ...userAnswersVisual,
+        incorrectNegatives: incorrectNegatives + 1
+      });
+    }
+  };
+  const handleClickAudio = () => {
+    if (!isFirstAudioClick) {
+      return;
+    }
+    setFirstAudioClick(false);
+    //console.log('handleClickAudio')
+    if (soundFile === nBackAudio[nLevel]) {
+      // correct
+      const { correctPositives } = userAnswersAudio;
+      setAnswersAudio({
+        ...userAnswersAudio,
+        correctPositives: correctPositives + 1
+      });
+      setShouldHaveClickedAudio(false); // no longer 'should' but 'did' click
+    } else {
+      // incorrect
+      const { incorrectNegatives } = userAnswersAudio;
+      setAnswersAudio({
+        ...userAnswersAudio,
+        incorrectNegatives: incorrectNegatives + 1
+      });
+    }
+  };
   return (
     <div className='site-content'>
       <DisplayScreenSize />
       <SoundPlayer soundIsPlaying={soundIsPlaying} soundFile={soundFile} />
       <ControlPanel />
+      <GameResults audio={userAnswersAudio} visual={userAnswersVisual} />
       <GameBoard />
-      <Button icon={'eye'} positive={squareNumber === nBackSquares[nLevel]} />
-      <Button icon={'comment'} positive={soundFile === nBackAudio[nLevel]} />
+      <div className='game-button-group'>
+        <Button
+          onClick={handleClickVisual}
+          className='game-button'
+          icon={'eye'}
+          positive={squareNumber === nBackSquares[nLevel]}
+        />
+        <Button
+          onClick={handleClickAudio}
+          className='game-button'
+          icon={'comment'}
+          positive={soundFile === nBackAudio[nLevel]}
+        />
+      </div>
       {!gameHasStarted && (
         <Button
           style={{ marginTop: '3rem' }}
@@ -132,14 +247,21 @@ const GameSession = props => {
 
 const mapStateToProps = ({
   sound: { soundIsPlaying, soundFile },
-  gameBoard: { squareNumber, gameStates, gameInProgress, gameHasStarted }
+  gameBoard: {
+    squareNumber,
+    gameStates,
+    gameInProgress,
+    gameHasStarted,
+    nLevel
+  }
 }) => ({
   soundIsPlaying,
   soundFile,
-  squareNumber, 
+  squareNumber,
   gameStates,
   gameInProgress,
-  gameHasStarted
+  gameHasStarted,
+  nLevel
 });
 
 export default connect(
@@ -149,6 +271,7 @@ export default connect(
     playSound,
     lightenSquare,
     updateGameParams,
-    stopGame
+    stopGame,
+    setGameResults
   }
 )(GameSession);

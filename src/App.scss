@@ -21,6 +21,7 @@ body {
   box-sizing: border-box;
   @include respond-phone {
     max-width: 37.5rem; //600px
+    margin: auto; 
   }
 }
 
@@ -28,6 +29,6 @@ body {
   display: flex;
   flex-direction: column;
 
-  max-width: 40rem;  // these two bring header items closer to center of screen
-  margin: auto;
+  max-width: $site-width-desktop; // Bring header items closer to center of screen
+  margin: auto;  // Centers entire site horizontally
 }

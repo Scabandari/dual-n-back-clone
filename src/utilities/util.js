@@ -79,7 +79,7 @@ const populateParams = (
 export const getGameParams = () => {
   const percentRepeats = [0.25, 0.3, 0.35, 0.4];
   const nLevel = 2;
-  const numberOfGameStates = 20;
+  const numberOfGameStates = 10; //20;
   let gameData = [];
   for (let i = 0; i < numberOfGameStates; i++) {
     gameData.push({
