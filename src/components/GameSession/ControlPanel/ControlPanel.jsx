@@ -19,9 +19,9 @@ const ControlPanel = props => {
     gameInProgress
   } = props;
 
-  const size = width < 600 ? 'mini' : '';
+  const size = width < 800 ? 'mini' : '';
   const buttonStyles =
-    width < 600 ? { minWidth: '3.2rem' } : { minWidth: '6rem' };
+    width < 800 ? { minWidth: '3.2rem' } : { minWidth: '6rem' };
 
   return (
     <div className='container'>
@@ -51,11 +51,11 @@ const ControlPanel = props => {
 
           {gameHasStarted && !gameInProgress && (
             <Button
-            style={buttonStyles}
-            onClick={startGame}
-            size={size}
-            compact
-            icon='play'
+              style={buttonStyles}
+              onClick={startGame}
+              size={size}
+              compact
+              icon='play'
             />
           )}
         </div>

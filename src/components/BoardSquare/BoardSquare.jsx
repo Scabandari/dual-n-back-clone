@@ -9,19 +9,19 @@ const BoardSquare = ({ id, overrideStyles, squareNumber }) => {
   let className_ = `square${lighten}`;
   return (
     <div className={className_} style={overrideStyles}>
-      {id}
+      {/* {id} */}
     </div>
   );
 };
 
-// BoardSquare.propTypes = {
-
-// }
+BoardSquare.propTypes = {
+    id: PropTypes.number.isRequired,
+    overrideStyles: PropTypes.object,
+}
 
 const mapStateToProps = ({ gameBoard: { squareNumber } }) => ({
     squareNumber
   });
-
 
 export default connect(
     mapStateToProps
