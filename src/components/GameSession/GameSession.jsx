@@ -13,6 +13,7 @@ import { setGameResults } from '../../actions/gameResultActions';
 import { useInterval } from '../../hooks';
 //import soundfile from '../../assets/a.mp3';
 import PropTypes from 'prop-types';
+import history from '../../history';
 import './GameSession.scss';
 import { updateGameParams } from '../../actions/gameboardActions';
 
@@ -81,6 +82,7 @@ const GameSession = props => {
     if (incVal >= gameStates.length) {
       setGameResults({ userAnswersAudio, userAnswersVisual });
       setTimeout(stopGame, 3000);
+      history.push('/game-results');
     }
   }, [incVal]);
 
