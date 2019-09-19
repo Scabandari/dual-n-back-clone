@@ -4,6 +4,7 @@ import GameBoard from './GameBoard';
 import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 import ControlPanel from './ControlPanel';
+import VisualCheck from '../VisualCheck';
 import GameResults from '../GameResults';
 import DisplayScreenSize from '../DisplayScreenSize';
 import { SoundPlayer } from '../../containers';
@@ -82,6 +83,7 @@ const GameSession = props => {
     if (incVal >= gameStates.length) {
       setGameResults({ userAnswersAudio, userAnswersVisual });
       setTimeout(stopGame, 3000);
+      lightenSquare(99);
       history.push('/game-results');
     }
   }, [incVal]);
@@ -204,10 +206,12 @@ const GameSession = props => {
   };
   return (
     <div className='site-content'>
-      <DisplayScreenSize />
       <SoundPlayer soundIsPlaying={soundIsPlaying} soundFile={soundFile} />
-      <ControlPanel />
-      <GameResults audio={userAnswersAudio} visual={userAnswersVisual} />
+      <ControlPanel nLevel={nLevel} />
+      <VisualCheck
+        userAnswersVisual={userAnswersVisual}
+        userAnswersAudio={userAnswersAudio}
+      />
       <GameBoard />
       <div className='game-button-group'>
         <Button

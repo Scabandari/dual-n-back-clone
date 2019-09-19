@@ -4,19 +4,16 @@ import { Button } from 'semantic-ui-react';
 import CountDownTimer from '../../CountDownTimer';
 import passScreenSize from '../../hoc/passScreenSize';
 import './ControlPanel.scss';
-//import { useSelector, useDispatch } from 'react-redux'
 
-// <Button onClick={() => togglePlaySound(!playSound)}>Play Sound</Button>
-//  const [playSound, togglePlaySound] = useState(false);
 const ControlPanel = props => {
-  //console.log('propssss', props);
   const {
     height,
     width,
     startGame,
     pauseGame,
     gameHasStarted,
-    gameInProgress
+    gameInProgress,
+    nLevel
   } = props;
 
   const size = width < 800 ? 'mini' : '';
@@ -24,8 +21,8 @@ const ControlPanel = props => {
     width < 800 ? { minWidth: '3.2rem' } : { minWidth: '6rem' };
 
   return (
-    <div className='container'>
-      <div className='level-info'>N = 2</div>
+    <div className='control-panel-container'>
+      <div>N = {nLevel}</div>
       <div className='flex-container-row'>
         <div className='button-group'>
           {!gameHasStarted && !gameInProgress && (

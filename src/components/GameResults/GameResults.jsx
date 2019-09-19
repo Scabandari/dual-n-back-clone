@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Segment, Icon, Button } from 'semantic-ui-react';
+import './GameResults.scss';
 
-const GameResults = (props) => {
+const GameResults = props => {
   const {
     correctPositives: acp,
     incorrectPositives: aip,
@@ -13,13 +16,70 @@ const GameResults = (props) => {
     incorrectNegatives: vin,
     incorrectPositives: vip
   } = props.userAnswersVisual;
+
   return (
-    <div>
-      <div className='audio'>
-        Audio: cp: {acp} in: {ain} ip: {aip}
-      </div>
-      <div className='audio'>
-        Visual: cp: {vcp} in: {vin} ip: {vip}
+    <div className='main'>
+      <Segment style={{ marginRight: '1.5rem', marginLeft: '1.5rem' }}>
+        <div className='results-container'>
+          <div className='row header-help'>
+            <div>Game Results</div>
+            <Icon
+              onClick={() => console.log('click help')}
+              circular
+              link
+              size='small'
+              name='help'
+            />
+          </div>
+          <div className='row'>
+            <div className='entry'>
+              <Icon size='big' color='green' name='eye' />
+              <div className='row-entry-score'>{vcp}</div>
+            </div>
+            <div className='entry'>
+              <Icon size='big' color='green' name='comment' />
+              <div className='row-entry-score'>{acp}</div>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='entry'>
+              <Icon.Group size='big'>
+                <Icon name='eye' />
+                <Icon corner color='red' name='plus' />
+              </Icon.Group>
+              <div className='row-entry-score'>{vip}</div>
+            </div>
+            <div className='entry'>
+              <Icon.Group size='big'>
+                <Icon name='comment' />
+                <Icon corner color='red' name='plus' />
+              </Icon.Group>
+              <div className='row-entry-score'>{aip}</div>
+            </div>
+          </div>
+
+          <div className='row'>
+            <div className='entry'>
+              <Icon.Group size='big'>
+                <Icon name='eye' />
+                <Icon corner color='red' name='minus' />
+              </Icon.Group>
+              <div className='row-entry-score'>{vin}</div>
+            </div>
+            <div className='entry'>
+              <Icon.Group size='big'>
+                <Icon name='comment' />
+                <Icon corner color='red' name='minus' />
+              </Icon.Group>
+              <div className='row-entry-score'>{ain}</div>
+            </div>
+          </div>
+        </div>
+      </Segment>
+      <div className='action-main'>
+        <Link to='/'>
+          <Button fluid>Continue</Button>
+        </Link>
       </div>
     </div>
   );
@@ -31,10 +91,12 @@ const GameResults = (props) => {
 // };
 
 const mapStateToProps = ({
-  gameResult: { userAnswersVisual, userAnswersAudio }
+  gameResult: { userAnswersVisual, userAnswersAudio },
+  gameBoard: { nLevel }
 }) => ({
   userAnswersAudio,
-  userAnswersVisual
+  userAnswersVisual,
+  nLevel
 });
 
 export default connect(mapStateToProps)(GameResults);

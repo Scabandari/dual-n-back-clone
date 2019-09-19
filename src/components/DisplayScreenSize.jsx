@@ -6,7 +6,7 @@ const DisplayScreenSize = props => {
     //console.log('props', props)
     return (
         <div style={{alignSelf: 'flex-end'}}>
-            width: {props.width} height: {props.height}
+            Width: {props.width} Height: {props.height}
         </div>
     )
 }

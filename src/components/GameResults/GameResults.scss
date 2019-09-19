@@ -1,0 +1,45 @@
+@import '../../utilities/variables';
+
+.main {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: $site-width;
+}
+
+.action-main {
+    display: flex;
+    flex-direction: column;
+    min-width: $site-width;
+    margin-top: 2rem;;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 25rem;
+  line-height: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-help {
+  justify-content: space-between;
+}
+
+.entry {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.row-entry-score {
+  margin-left: 1rem;
+}
