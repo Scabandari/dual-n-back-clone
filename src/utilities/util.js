@@ -9,13 +9,7 @@ const randomIntWithinRange = (from, to) => {
   return Math.floor(Math.random() * (to - from + 1)) + from;
 };
 
-const fillRepeats = (
-  nLevel,
-  gameData,
-  repeats,
-  paramName,
-  possibleValues
-) => {
+const fillRepeats = (nLevel, gameData, repeats, paramName, possibleValues) => {
   const numberOfGameStates = gameData.length;
   while (repeats > 0) {
     repeats -= 1;
@@ -63,13 +57,7 @@ const populateParams = (
   possibleValues
 ) => {
   let repeats = numberRepeats;
-  fillRepeats(
-    nLevel,
-    gameData,
-    repeats,
-    paramName,
-    possibleValues
-  );
+  fillRepeats(nLevel, gameData, repeats, paramName, possibleValues);
 
   fillRandoms(nLevel, gameData, paramName, possibleValues);
 };
@@ -79,7 +67,7 @@ const populateParams = (
 export const getGameParams = () => {
   const percentRepeats = [0.25, 0.3, 0.35, 0.4];
   const nLevel = 2;
-  const numberOfGameStates = 5//10; //20;
+  const numberOfGameStates = 10; //20;
   let gameData = [];
   for (let i = 0; i < numberOfGameStates; i++) {
     gameData.push({
