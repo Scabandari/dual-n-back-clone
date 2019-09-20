@@ -17,7 +17,7 @@ function App() {
         <Switch>
           <Route path={'/landing'} exact component={Landing} />
           <Route path={'/profile'} exact component={Profile} />
-          <Route path={'/'} exact component={GameSession} />
+          <Route path={'/'} exact component={Profile} />
           <Route path={'/game-session'} exact component={GameSession} />
           <Route path={'/game-results'} exact component={GameResults} />
         </Switch>

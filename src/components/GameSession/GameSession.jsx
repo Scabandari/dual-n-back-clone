@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import GameBoard from './GameBoard';
 import { Button } from 'semantic-ui-react';
 import ControlPanel from './ControlPanel';
@@ -88,7 +89,7 @@ const GameSession = props => {
     if (soundFile === nBackAudio[nLevel]) {
       setShouldHaveClickedAudio(true);
     } else {
-      setShouldHaveClickedVisual(false);
+        setShouldHaveClickedAudio(false);
     }
   }, [nBackAudio, soundFile]);
 
@@ -137,10 +138,9 @@ const GameSession = props => {
       setFirstAudioClick(true);
       setFirstVisualClick(true);
 
-      const { 
-          audio: localAudio, 
-          squareNumber: localSquareNumber 
-        } = gameStates[incVal];
+      const { audio: localAudio, squareNumber: localSquareNumber } = gameStates[
+        incVal
+      ];
 
       // Update local state which tracks matches between current values and those nBack
       setnBackSquares({
@@ -238,24 +238,16 @@ const GameSession = props => {
           positive={soundFile === nBackAudio[nLevel]}
         />
       </div>
-      {!gameHasStarted && (
+      <Link to='/profile'>
         <Button
+          fluid
+          negative={gameHasStarted}
           style={{ marginTop: '3rem' }}
-          onClick={() => lightenSquare(squareNumber + 1)}
+        onClick={() => stopGame()}
         >
-          Back {squareNumber}
+          {gameHasStarted ? 'Quit' : 'Back'}
         </Button>
-      )}
-
-      {gameHasStarted && (
-        <Button
-          negative
-          style={{ marginTop: '3rem' }}
-          onClick={() => lightenSquare(squareNumber + 1)}
-        >
-          Quit {squareNumber}
-        </Button>
-      )}
+      </Link>
     </div>
   );
 };

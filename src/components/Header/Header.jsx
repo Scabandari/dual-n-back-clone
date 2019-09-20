@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import DisplayScreenSize from '../DisplayScreenSize'
+import { Menu, Icon } from 'semantic-ui-react';
+
+import DisplayScreenSize from '../DisplayScreenSize';
 import './Header.scss';
 
 const Header = () => {
@@ -9,16 +11,26 @@ const Header = () => {
       <Link to='/' className='item'>
         <div className='menu-title'>Dual N-Back Clone</div>
       </Link>
-      <div className='right menu'>
-        <DisplayScreenSize />
-      </div>
-      <div className='right menu'>
-        <Link to='/game-results' className='item'>
-          <div>Link</div>
-        </Link>
+      <div className='right menu'>{/* <DisplayScreenSize /> */}</div>
+      <div className='right menu item'>
+        <Icon circular name='user' />
       </div>
     </div>
   );
 };
 
 export default Header;
+
+// <Menu secondary pointing >
+//   <Menu.Header
+//     content='Dual N-Back Clone'
+
+//   />
+//   <Menu.Item
+//     name='reviews'
+//     //active={true}
+//     onClick={() => console.log('Clicked Menu.Item')}
+//   >
+//     Reviews
+//   </Menu.Item>
+// </Menu>
