@@ -9,9 +9,9 @@ function SoundPlayer({ soundIsPlaying, soundFile }) {
         <Sound
           url={soundFile}
           playStatus={Sound.status.PLAYING}
-          onLoading={() => console.log('onLoading...')}
-          onPlaying={() => console.log('onPlaying...')}
-          onFinishedPlaying={() => console.log('onFinishedPlaying...')}
+          //   onLoading={() => console.log('onLoading...')}
+          //   onPlaying={() => console.log('onPlaying...')}
+          //   onFinishedPlaying={() => console.log('onFinishedPlaying...')}
         />
       )}
     </Fragment>

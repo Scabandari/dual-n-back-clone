@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import GameBoard from './GameBoard';
-import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 import ControlPanel from './ControlPanel';
 import VisualCheck from '../VisualCheck';
-import GameResults from '../GameResults';
-import DisplayScreenSize from '../DisplayScreenSize';
 import { SoundPlayer } from '../../containers';
 import { lightenSquare, stopGame } from '../../actions/gameboardActions';
 import { setSound, playSound } from '../../actions/soundActions';
@@ -17,8 +14,6 @@ import PropTypes from 'prop-types';
 import history from '../../history';
 import './GameSession.scss';
 import { updateGameParams } from '../../actions/gameboardActions';
-
-//TODO https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 
 const GameSession = props => {
   const {
@@ -76,9 +71,9 @@ const GameSession = props => {
 
   useEffect(() => {
     updateGameParams();
-    console.log('gameStates', JSON.stringify(gameStates));
   }, []); // todo think about when to run this
 
+  // Called when Game Session finishes, clean up
   useEffect(() => {
     if (incVal >= gameStates.length) {
       setGameResults({ userAnswersAudio, userAnswersVisual });
@@ -106,10 +101,17 @@ const GameSession = props => {
     }
   }, [nBackSquares, squareNumber]);
 
+  // https://overreacted.io/making-setinterval-declarative-with-react-hooks/
   useInterval(
     () => {
       // Check if user should have clicked either audio or visual and update results
       if (shouldHaveClickedAudio) {
+        console.log('shouldHaveClickedAudio');
+        console.log('current audio', soundFile);
+        console.log('nBack audio', nBackAudio[nLevel]);
+        console.log('current square', squareNumber);
+        console.log('nBack audio', nBackSquares[nLevel]);
+
         const { incorrectPositives } = userAnswersAudio;
         setAnswersAudio({
           ...userAnswersAudio,
@@ -117,6 +119,12 @@ const GameSession = props => {
         });
       }
       if (shouldHaveClickedVisual) {
+        console.log('shouldHaveClickedVisual');
+        console.log('current audio', soundFile);
+        console.log('nBack audio', nBackAudio[nLevel]);
+        console.log('current square', squareNumber);
+        console.log('nBack audio', nBackSquares[nLevel]);
+
         const { incorrectPositives } = userAnswersVisual;
         setAnswersVisual({
           ...userAnswersVisual,
@@ -129,7 +137,10 @@ const GameSession = props => {
       setFirstAudioClick(true);
       setFirstVisualClick(true);
 
-      const { audio, squareNumber: localSquareNumber } = gameStates[incVal];
+      const { 
+          audio: localAudio, 
+          squareNumber: localSquareNumber 
+        } = gameStates[incVal];
 
       // Update local state which tracks matches between current values and those nBack
       setnBackSquares({
@@ -150,9 +161,9 @@ const GameSession = props => {
       });
 
       // Fire actions
-      setSound(audio);
-      lightenSquare(localSquareNumber);
+      setSound(localAudio);
       playSound();
+      lightenSquare(localSquareNumber);
       setIncVal(incVal + 1);
     },
     gameInProgress ? delay : null // null will pause interval
