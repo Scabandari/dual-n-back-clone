@@ -77,7 +77,7 @@ const GameResults = props => {
         </div>
       </Segment>
       <div className='action-main'>
-        <Link to='/'>
+        <Link to='/profile'>
           <Button fluid>Continue</Button>
         </Link>
       </div>

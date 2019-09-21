@@ -7,10 +7,18 @@
 */
 
 @mixin respond-phone {
-    @media (max-width: 800px) { @content };  //600
+  @media (max-width: 650px) {
+    @content;
+  } //600
 }
 
-// Could do each as above or handle all as below 
+@mixin respond-desktop {
+  @media (min-height: 600px) and (min-width: 1000px) {
+    @content;
+  }
+}
+
+// Could do each as above or handle all as below
 /*
     $breakpoint choices
     - phone
@@ -20,7 +28,14 @@
 */
 
 @mixin respond($breakpoint) {
-    @if $breakpoint == phone {
-        @media (max-width: 600px) { @content };
+  @if $breakpoint == phone {
+    @media (max-width: 600px) {
+      @content;
     }
+  }
+  @if $breakpoint == desk-top {
+    @media (min-height: 90vh) {
+      @content;
+    }
+  }
 }

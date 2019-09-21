@@ -97,6 +97,12 @@ export const getGameParams = () => {
     audioFiles
   );
 
+  // Add dummy values as last element, values that can't match nBack values
+  gameData.push({
+    audio: 'empty1928374', // anything that won't match audio files
+    squareNumber: 201  // any # not 1-9
+  });
+
   console.log('gameData', gameData);
   return gameData;
 };
