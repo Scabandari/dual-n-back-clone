@@ -7,6 +7,7 @@
   min-width: $site-width;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   font-weight: bold;
 
   font-size: 1.2rem; // todo use variables
@@ -15,16 +16,18 @@
     min-width: 18.75rem;
     font-size: 1rem;
   }
+
+  @include respond-desktop {
+    min-height: 90vh;
+  }
 }
 
 .game-button-group {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  margin-top: 3rem;
 }
 
 .game-button {
   min-width: $button-width-desktop;
-  margin-top: 3rem;
 }

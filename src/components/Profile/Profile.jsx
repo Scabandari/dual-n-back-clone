@@ -11,7 +11,7 @@ const Profile = props => {
       <GameHistory userIsAuth={false} />
       <div className='profile-container-action'>
         <Link to='/game-session'>
-          <Button fluid >Start New Game</Button>
+          <Button fluid>Start New Game</Button>
         </Link>
       </div>
     </div>

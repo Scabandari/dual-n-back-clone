@@ -217,32 +217,31 @@ const GameSession = props => {
   };
   return (
     <div className='site-content'>
-      <SoundPlayer soundIsPlaying={soundIsPlaying} soundFile={soundFile} />
       <ControlPanel nLevel={nLevel} />
-      <VisualCheck
+      {/* <VisualCheck
         userAnswersVisual={userAnswersVisual}
         userAnswersAudio={userAnswersAudio}
-      />
+      /> */}
       <GameBoard />
       <div className='game-button-group'>
         <Button
           onClick={handleClickVisual}
           className='game-button'
           icon={'eye'}
-          positive={squareNumber === nBackSquares[nLevel]}
+          //positive={squareNumber === nBackSquares[nLevel]}
         />
         <Button
           onClick={handleClickAudio}
           className='game-button'
           icon={'comment'}
-          positive={soundFile === nBackAudio[nLevel]}
+          //positive={soundFile === nBackAudio[nLevel]}
         />
       </div>
       <Link to='/profile'>
         <Button
           fluid
           negative={gameHasStarted}
-          style={{ marginTop: '3rem' }}
+          //style={{ marginTop: '3rem' }}
         onClick={() => stopGame()}
         >
           {gameHasStarted ? 'Quit' : 'Back'}
@@ -251,6 +250,8 @@ const GameSession = props => {
     </div>
   );
 };
+
+//      <SoundPlayer soundIsPlaying={soundIsPlaying} soundFile={soundFile} />
 
 //GameSession.propTypes = {};
 

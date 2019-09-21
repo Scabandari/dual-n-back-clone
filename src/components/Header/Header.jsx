@@ -11,8 +11,12 @@ const Header = () => {
       <Link to='/' className='item'>
         <div className='menu-title'>Dual N-Back Clone</div>
       </Link>
-      <div className='right menu'>{/* <DisplayScreenSize /> */}</div>
+      {/* <div className='right menu'><DisplayScreenSize /></div> */}
+
       <div className='right menu item'>
+        <a href='https://github.com/Scabandari/dual-n-back-clone'>
+          <Icon style={{ marginRight: '.8rem' }} circular name='github' />
+        </a>
         <Icon circular name='user' />
       </div>
     </div>
