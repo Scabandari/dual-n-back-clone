@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Icon } from 'semantic-ui-react';
+import history from '../../history';
 
 import DisplayScreenSize from '../DisplayScreenSize';
 import './Header.scss';
@@ -14,10 +15,10 @@ const Header = () => {
       {/* <div className='right menu'><DisplayScreenSize /></div> */}
 
       <div className='right menu item'>
-        <a href='https://github.com/Scabandari/dual-n-back-clone'>
-          <Icon style={{ marginRight: '.8rem' }} circular name='github' />
-        </a>
-        <Icon circular name='user' />
+        <Icon style={{ marginRight: '.8rem' }} circular name='github'>
+          <a href='https://github.com/Scabandari/dual-n-back-clone' />
+        </Icon>
+        <Icon circular link onClick={() => history.push('./game-results')} name='user' />
       </div>
     </div>
   );

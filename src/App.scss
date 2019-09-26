@@ -15,20 +15,21 @@ video {
   max-width: 100%; // keeps content limited to less than screen size
 }
 
-// TODO tap targets > 48px min-height min-width or at least that far from each other
+// // TODO tap targets > 48px min-height min-width or at least that far from each other
 
 body {
   box-sizing: border-box;
-  @include respond-phone {
-    max-width: 37.5rem; //600px
-    margin: auto; 
-  }
+  border: 3px solid red;
+//   @include respond-phone {
+//     max-width: 37.5rem; //600px
+//     margin: auto; 
+//   }
 }
 
-.site-content-container {
-  display: flex;
-  flex-direction: column;
+// .site-content-container {
+//   display: flex;
+//   flex-direction: column;
 
-  max-width: $site-width-desktop; // Bring header items closer to center of screen
-  margin: auto;  // Centers entire site horizontally
-}
+//   max-width: $site-width-desktop; // Bring header items closer to center of screen
+//   margin: auto;  // Centers entire site horizontally
+// }

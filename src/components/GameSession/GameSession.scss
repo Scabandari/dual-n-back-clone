@@ -1,31 +1,27 @@
 @import '../../mixins';
 @import '../../utilities/variables';
 
-.site-content {
+.game-session-main {
   align-self: center;
   //background-color: blue;
-  min-width: $site-width;
+  //min-width: $site-width;
   display: flex;
   flex-direction: column;
+  min-height: 30rem;
   justify-content: space-around;
+  max-width: 90vw;
+  margin: auto;
   font-weight: bold;
-
   font-size: 1.2rem; // todo use variables
-  @include respond-phone {
-    //background-color: green;
-    min-width: 18.75rem;
-    font-size: 1rem;
-  }
-
-  @include respond-desktop {
-    min-height: 90vh;
+  @include min-width-700 {
+    min-height: 40rem;
+    max-width: 680px;
   }
 }
 
 .game-button-group {
   display: flex;
   justify-content: space-around;
-  flex-direction: row;
 }
 
 .game-button {

@@ -1,17 +1,15 @@
 // @import '../../../utilities/variables';
 
-// .profile-container {
-//   display: flex;
-//   flex-direction: column;
-// }
+.profile-main {
 
-// .profile-container-action {
-//   display: flex;
-//   flex-direction: column;
-//   //min-width: $site-width;
-//   margin-top: 2rem;
-// }
 
-.but {
-    visibility: hidden;
+}
+
+.segment-content {
+    height: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }

@@ -1,13 +1,19 @@
+@import '../../mixins';
 @import '../../utilities/variables';
 
-// .profile-container {
-//   display: flex;
-//   flex-direction: column;
-// }
+.profile-main {
+  //margin-top: 200rem;
+  max-width: 90vw;
+  margin: auto;
 
-.profile-container-action {
-  display: flex;
-  flex-direction: column;
-  //min-width: $site-width;
+  @include min-width-700 {
+    max-width: 680px;
+  }
+}
+
+.profile-main-action {
+  //   display: flex;
+  //   flex-direction: column;
+  //   //min-width: $site-width;
   margin-top: 2rem;
 }
