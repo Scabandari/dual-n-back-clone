@@ -7,9 +7,9 @@ import './Profile.scss';
 
 const Profile = props => {
   return (
-    <div>
+    <div className="profile-main">
       <GameHistory userIsAuth={false} />
-      <div className='profile-container-action'>
+      <div className='profile-main-action'>
         <Link to='/game-session'>
           <Button fluid>Start New Game</Button>
         </Link>

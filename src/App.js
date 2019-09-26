@@ -12,16 +12,14 @@ const Landing = () => {
 function App() {
   return (
     <Router history={history}>
-      <div className='site-content-container'>
-        <Header />
-        <Switch>
-          <Route path={'/landing'} exact component={Landing} />
-          <Route path={'/profile'} exact component={Profile} />
-          <Route path={'/'} exact component={Profile} />
-          <Route path={'/game-session'} exact component={GameSession} />
-          <Route path={'/game-results'} exact component={GameResults} />
-        </Switch>
-      </div>
+      <Header />
+      <Switch>
+        <Route path={'/landing'} exact component={Landing} />
+        <Route path={'/profile'} exact component={Profile} />
+        <Route path={'/'} exact component={Profile} />
+        <Route path={'/game-session'} exact component={GameSession} />
+        <Route path={'/game-results'} exact component={GameResults} />
+      </Switch>
     </Router>
   );
 }

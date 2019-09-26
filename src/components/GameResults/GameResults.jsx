@@ -19,63 +19,65 @@ const GameResults = props => {
 
   return (
     <div className='main'>
-      <Segment style={{ marginRight: '1.5rem', marginLeft: '1.5rem' }}>
-        <div className='results-container'>
-          <div className='row header-help'>
-            <div>Game Results</div>
-            <Icon
-              onClick={() => console.log('click help')}
-              circular
-              link
-              size='small'
-              name='help'
-            />
-          </div>
-          <div className='row'>
-            <div className='entry'>
-              <Icon size='big' color='green' name='eye' />
-              <div className='row-entry-score'>{vcp}</div>
+      <div>
+        <Segment style={{ marginRight: '1.5rem', marginLeft: '1.5rem' }}>
+          <div className='results-container'>
+            <div className='row header-help'>
+              <div>Game Results</div>
+              <Icon
+                onClick={() => console.log('click help')}
+                circular
+                link
+                size='small'
+                name='help'
+              />
             </div>
-            <div className='entry'>
-              <Icon size='big' color='green' name='comment' />
-              <div className='row-entry-score'>{acp}</div>
+            <div className='row'>
+              <div className='entry'>
+                <Icon size='big' color='green' name='eye' />
+                <div className='row-entry-score'>{vcp}</div>
+              </div>
+              <div className='entry'>
+                <Icon size='big' color='green' name='comment' />
+                <div className='row-entry-score'>{acp}</div>
+              </div>
             </div>
-          </div>
-          <div className='row'>
-            <div className='entry'>
-              <Icon.Group size='big'>
-                <Icon name='eye' />
-                <Icon corner color='red' name='plus' />
-              </Icon.Group>
-              <div className='row-entry-score'>{vip}</div>
+            <div className='row'>
+              <div className='entry'>
+                <Icon.Group size='big'>
+                  <Icon name='eye' />
+                  <Icon corner color='red' name='plus' />
+                </Icon.Group>
+                <div className='row-entry-score'>{vip}</div>
+              </div>
+              <div className='entry'>
+                <Icon.Group size='big'>
+                  <Icon name='comment' />
+                  <Icon corner color='red' name='plus' />
+                </Icon.Group>
+                <div className='row-entry-score'>{aip}</div>
+              </div>
             </div>
-            <div className='entry'>
-              <Icon.Group size='big'>
-                <Icon name='comment' />
-                <Icon corner color='red' name='plus' />
-              </Icon.Group>
-              <div className='row-entry-score'>{aip}</div>
-            </div>
-          </div>
 
-          <div className='row'>
-            <div className='entry'>
-              <Icon.Group size='big'>
-                <Icon name='eye' />
-                <Icon corner color='red' name='minus' />
-              </Icon.Group>
-              <div className='row-entry-score'>{vin}</div>
-            </div>
-            <div className='entry'>
-              <Icon.Group size='big'>
-                <Icon name='comment' />
-                <Icon corner color='red' name='minus' />
-              </Icon.Group>
-              <div className='row-entry-score'>{ain}</div>
+            <div className='row'>
+              <div className='entry'>
+                <Icon.Group size='big'>
+                  <Icon name='eye' />
+                  <Icon corner color='red' name='minus' />
+                </Icon.Group>
+                <div className='row-entry-score'>{vin}</div>
+              </div>
+              <div className='entry'>
+                <Icon.Group size='big'>
+                  <Icon name='comment' />
+                  <Icon corner color='red' name='minus' />
+                </Icon.Group>
+                <div className='row-entry-score'>{ain}</div>
+              </div>
             </div>
           </div>
-        </div>
-      </Segment>
+        </Segment>
+      </div>
       <div className='action-main'>
         <Link to='/profile'>
           <Button fluid>Continue</Button>

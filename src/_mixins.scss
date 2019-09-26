@@ -6,6 +6,13 @@
     [1200 - 1800px] where normal styles apply: desktop 1st approach 
 */
 
+@mixin min-width-700 {
+  @media (min-width: 700px) {
+    @content;
+  }
+}
+
+///////////////////////////////////////////////////////////////////
 @mixin respond-phone {
   @media (max-width: 650px) {
     @content;

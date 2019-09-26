@@ -16,46 +16,26 @@ const ControlPanel = props => {
     nLevel
   } = props;
 
-  const size = width < 800 ? 'mini' : '';
-  const buttonStyles =
-    width < 800 ? { minWidth: '3.2rem' } : { minWidth: '6rem' };
-
   return (
     <div className='control-panel-container'>
       <div>N = {nLevel}</div>
       <div className='flex-container-row'>
-        <div className='button-group'>
-          {!gameHasStarted && !gameInProgress && (
-            <Button
-              style={buttonStyles}
-              onClick={startGame}
-              size={size}
-              positive
-              compact
-              icon='play'
-            />
-          )}
+        {!gameHasStarted && !gameInProgress && (
+          <Button
+            className='game-button'
+            onClick={startGame}
+            positive
+            icon='play'
+          />
+        )}
 
-          {gameHasStarted && gameInProgress && (
-            <Button
-              style={buttonStyles}
-              onClick={pauseGame}
-              size={size}
-              compact
-              icon='pause'
-            />
-          )}
+        {gameHasStarted && gameInProgress && (
+          <Button className='game-button' onClick={pauseGame} icon='pause' />
+        )}
 
-          {gameHasStarted && !gameInProgress && (
-            <Button
-              style={buttonStyles}
-              onClick={startGame}
-              size={size}
-              compact
-              icon='play'
-            />
-          )}
-        </div>
+        {gameHasStarted && !gameInProgress && (
+          <Button className='game-button' onClick={startGame} icon='play' />
+        )}
         <CountDownTimer timerRunning={gameHasStarted && gameInProgress} />
       </div>
     </div>

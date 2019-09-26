@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import GameBoard from './GameBoard';
 import { Button } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+
+import GameBoard from './GameBoard';
 import ControlPanel from './ControlPanel';
 import VisualCheck from '../VisualCheck';
 import { SoundPlayer } from '../../containers';
 import { lightenSquare, stopGame } from '../../actions/gameboardActions';
 import { setSound, playSound } from '../../actions/soundActions';
 import { setGameResults } from '../../actions/gameResultActions';
+import { updateGameParams } from '../../actions/gameboardActions';
 import { useInterval } from '../../hooks';
 //import soundfile from '../../assets/a.mp3';
-import PropTypes from 'prop-types';
 import history from '../../history';
 import './GameSession.scss';
-import { updateGameParams } from '../../actions/gameboardActions';
+
 
 const GameSession = props => {
   const {
@@ -89,7 +91,7 @@ const GameSession = props => {
     if (soundFile === nBackAudio[nLevel]) {
       setShouldHaveClickedAudio(true);
     } else {
-        setShouldHaveClickedAudio(false);
+      setShouldHaveClickedAudio(false);
     }
   }, [nBackAudio, soundFile]);
 
@@ -216,7 +218,7 @@ const GameSession = props => {
     }
   };
   return (
-    <div className='site-content'>
+    <div className='game-session-main'>
       <ControlPanel nLevel={nLevel} />
       {/* <VisualCheck
         userAnswersVisual={userAnswersVisual}
@@ -242,16 +244,15 @@ const GameSession = props => {
           fluid
           negative={gameHasStarted}
           //style={{ marginTop: '3rem' }}
-        onClick={() => stopGame()}
+          onClick={() => stopGame()}
         >
           {gameHasStarted ? 'Quit' : 'Back'}
         </Button>
       </Link>
+      <SoundPlayer soundIsPlaying={soundIsPlaying} soundFile={soundFile} />
     </div>
   );
 };
-
-//      <SoundPlayer soundIsPlaying={soundIsPlaying} soundFile={soundFile} />
 
 //GameSession.propTypes = {};
 
