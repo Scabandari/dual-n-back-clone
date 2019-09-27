@@ -14,7 +14,7 @@
   font-weight: bold;
   font-size: 1.2rem; // todo use variables
   @include min-width-700 {
-    min-height: 40rem;
+    min-height: 35rem;
     max-width: 680px;
   }
 }

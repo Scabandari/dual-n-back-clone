@@ -5,6 +5,7 @@
   margin: 3rem auto 0 auto;
   display: flex;
   flex-direction: column;
+  max-width: 90vw;
   @include min-width-700 {
     max-width: 680px;
   }
@@ -13,8 +14,12 @@
 .action-main {
   display: flex;
   flex-direction: column;
-  min-width: 94%;
-  margin: 3rem auto 0 auto;
+  min-width: 90vw;
+  margin-top: 3rem;
+  @include min-width-700 {
+    max-width: 680px;
+    min-width: 680px;
+  }
 }
 
 .results-container {
@@ -23,8 +28,16 @@
   justify-content: space-between;
   min-height: 25rem;
   line-height: 2.5rem;
-  font-size: 1.5rem;
   font-weight: bold;
+  @include min-width-700 {
+    font-size: 1.5rem;
+  }
+}
+
+.result__help {
+  @include min-width-700 {
+    font-size: 1rem;
+  }
 }
 
 .row {

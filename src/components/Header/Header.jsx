@@ -15,10 +15,16 @@ const Header = () => {
       {/* <div className='right menu'><DisplayScreenSize /></div> */}
 
       <div className='right menu item'>
-        <Icon style={{ marginRight: '.8rem' }} circular name='github'>
-          <a href='https://github.com/Scabandari/dual-n-back-clone' />
-        </Icon>
-        <Icon circular link onClick={() => history.push('./game-results')} name='user' />
+        <a className='link' href='https://github.com/Scabandari/dual-n-back-clone'>
+          <Icon style={{ marginRight: '.8rem' }} circular name='github' />
+        </a>
+        <Icon
+          circular
+          link
+          //onClick={() => history.push('./profile')}
+          onClick={() => history.push('./game-results')}
+          name='user'
+        />
       </div>
     </div>
   );
