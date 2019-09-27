@@ -1,0 +1,15 @@
+@import '../../mixins';
+@import '../../utilities/variables';
+
+.main {
+  font-size: 1.5rem;
+}
+
+.clock {
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-button {
+  width: $button-width-desktop;
+}

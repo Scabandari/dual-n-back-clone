@@ -4,5 +4,6 @@ import BoardRow from './BoardRow';
 import Header from './Header';
 import Profile from './Profile';
 import GameResults from './GameResults';
+import Clock from './Clock';
 
-export { GameSession, Header, Profile, BoardSquare, BoardRow, GameResults };
+export { GameSession, Header, Profile, BoardSquare, BoardRow, GameResults, Clock };
