@@ -22,9 +22,9 @@ const GameHistory = ({ userIsAuth, width }) => {
             <br /> Signing in will let you track your progress.
           </p>
           {/* </Header> */}
-          <Button onClick={() => setShowAuthMsg(!showAuthMsg)} primary>
+          <a href={"/auth/google"}><Button  primary>
             Sign In
-          </Button>
+          </Button></a>
           {showAuthMsg && (
             <Message
               negative
@@ -43,3 +43,6 @@ const GameHistory = ({ userIsAuth, width }) => {
 GameHistory.propTypes = {};
 
 export default passScreenSize(GameHistory);
+
+
+//onClick={() => setShowAuthMsg(!showAuthMsg)}

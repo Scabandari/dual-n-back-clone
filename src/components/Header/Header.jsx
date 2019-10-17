@@ -18,13 +18,17 @@ const Header = () => {
         <a className='link' href='https://github.com/Scabandari/dual-n-back-clone'>
           <Icon style={{ marginRight: '.8rem' }} circular name='github' />
         </a>
-        <Icon
+
+        <a className='link' href='/auth/google'>
+          <Icon style={{ marginRight: '.8rem' }} circular name='user' />
+        </a>
+        {/* <Icon
           circular
           link
           //onClick={() => history.push('./profile')}
           onClick={() => history.push('./game-results')}
           name='user'
-        />
+        /> */}
       </div>
     </div>
   );
