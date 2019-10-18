@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Icon, Segment, Message } from 'semantic-ui-react';
-//import './GameHistory.scss';
+import './PleaseLogin.scss';
 
 const PleaseLogin = () => {
   return (

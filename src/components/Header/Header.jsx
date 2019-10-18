@@ -19,16 +19,9 @@ const Header = () => {
           <Icon style={{ marginRight: '.8rem' }} circular name='github' />
         </a>
 
-        <a className='link' href='/auth/google'>
+        <a className='link' href='/dnbc/auth/google'>
           <Icon style={{ marginRight: '.8rem' }} circular name='user' />
         </a>
-        {/* <Icon
-          circular
-          link
-          //onClick={() => history.push('./profile')}
-          onClick={() => history.push('./game-results')}
-          name='user'
-        /> */}
       </div>
     </div>
   );

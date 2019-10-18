@@ -3,7 +3,7 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Router, Route, Switch } from 'react-router-dom';
 
-import { GameSession, Profile, Header, GameResults, Clock, Landing } from './components';
+import { GameSession, ProfileContainer, Header, GameResults, Clock, Landing } from './components';
 import history from './history';
 import { fetchUser } from './actions/authActions';
 
@@ -23,7 +23,7 @@ function App({fetchUser}) {
       <Header />
       <Switch>
         <Route path={'/'} exact component={Landing} />
-        <Route path={'/profile'} exact component={Profile} />
+        <Route path={'/profile'} exact component={ProfileContainer} />
         <Route path={'/game-session'} exact component={GameSession} />
         <Route path={'/game-results'} exact component={GameResults} />
         <Route path={'/clock'} exact component={Clock} />

@@ -1,46 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
+import Avatar from 'react-avatar';
+import { Button, Icon, Segment, Message } from 'semantic-ui-react';
 
-import GameHistory from './GameHistory';
-import PleaseLogin from './PleaseLogin';
-import './Profile.scss';
-
-const renderContent = auth => {
-  switch (auth) {
-    case null:
-      return <h3>Loading...</h3>;
-    case false:
-      return <PleaseLogin />;
-    default:
-      return <GameHistory />;
-  }
-};
-
-const Profile = ({ auth }) => {
+// <Avatar googleId='101064566828062405563' size='100' round={true} />
+const Profile = props => {
   return (
-    <div className='profile-main'>
-      {renderContent(auth)}
-      <div className='profile-main-action'>
-        <Link to='/game-session'>
-          <Button fluid>Start New Game</Button>
-        </Link>
-      </div>
-    </div>
+    <Segment>
+        <h2>Profile</h2>
+      <Avatar name='Rion Developer' />
+    </Segment>
   );
 };
 
 Profile.propTypes = {};
 
-const mapStateToProps = state => {
-  return {
-    auth: state.auth
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  null
-)(Profile);
+export default Profile;
