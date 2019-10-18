@@ -6,4 +6,15 @@ import Profile from './Profile';
 import GameResults from './GameResults';
 import Clock from './Clock';
 
-export { GameSession, Header, Profile, BoardSquare, BoardRow, GameResults, Clock };
+import Landing from './Landing';
+
+export {
+  GameSession,
+  Header,
+  Profile,
+  BoardSquare,
+  BoardRow,
+  GameResults,
+  Clock,
+  Landing
+};
