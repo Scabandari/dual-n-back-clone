@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
-import GameHistory from './GameHistory';
-import './Profile.scss';
+import Avatar from 'react-avatar';
+import { Divider, Segment } from 'semantic-ui-react';
 
-const Profile = props => {
+import NLevelRadioGroup from './NLevelRadioGroup'
+
+// <Avatar googleId='101064566828062405563' size='100' round={true} />
+const Profile = ({auth, updateNLevel}) => {
   return (
-    <div className="profile-main">
-      <GameHistory userIsAuth={false} />
-      <div className='profile-main-action'>
-        <Link to='/game-session'>
-          <Button fluid>Start New Game</Button>
-        </Link>
-      </div>
-    </div>
+    <Segment>
+        <h3>Profile</h3>
+      <Avatar name={auth.displayName} />
+      <Divider />
+      <h3>Settings</h3>
+      <NLevelRadioGroup auth={auth} updateNLevel={updateNLevel} />  
+    </Segment>
   );
 };
 

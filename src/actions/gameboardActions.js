@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { getGameParams } from '../utilities/util';
 import sleep from 'sleep-promise';
 import {
@@ -8,6 +9,7 @@ import {
   PAUSE_GAME,
   SET_N_LEVEL
 } from './types';
+import { catchClause } from '@babel/types';
 
 export const lightenSquare = squareNumber => async dispatch => {
   dispatch({
@@ -15,7 +17,7 @@ export const lightenSquare = squareNumber => async dispatch => {
     type: LIGHTEN_SQUARE,
     payload: 12 // not a square number, any non-square number will do
   });
-  await sleep(50)
+  await sleep(50);
   dispatch({
     type: LIGHTEN_SQUARE,
     payload: squareNumber
@@ -30,12 +32,23 @@ export const updateGameParams = () => {
   };
 };
 
-export const updateNLevel = nLevel => {
-    return {
-      type: SET_N_LEVEL,
-      payload: nLevel
-    };
+export const updateNLevel = (userId, nLevel) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
   };
+  try {
+    const res = await axios.put(`/dnbc/user/${userId}`, { nLevel }, config);
+    //console.log(res);
+    dispatch ({
+      type: SET_N_LEVEL,
+      payload: res.data.nLevel
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const startGame = () => {
   return {
