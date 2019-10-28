@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -6,23 +6,25 @@ import { Button } from 'semantic-ui-react';
 
 import Profile from './Profile';
 import PleaseLogin from './PleaseLogin';
+import { updateNLevel } from '../../actions/gameboardActions';
 import './Profile.scss';
 
-const renderContent = auth => {
+const renderContent = (auth, updateNLevel) => {
   switch (auth) {
     case null:
       return <h3>Loading...</h3>;
     case false:
       return <PleaseLogin />;
     default:
-      return <Profile />;
+      return <Profile auth={auth} updateNLevel={updateNLevel} />;
   }
 };
 
-const ProfileContainer = ({ auth }) => {
+const ProfileContainer = ({ auth, updateNLevel }) => {
+
   return (
     <div className='profile-main'>
-      {renderContent(auth)}
+      {renderContent(auth, updateNLevel)}
       <div className='profile-main-action'>
         <Link to='/game-session'>
           <Button fluid>Start New Game</Button>
@@ -42,5 +44,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  null
+  { updateNLevel }
 )(ProfileContainer);
