@@ -52,7 +52,7 @@ const populateParams = (
   nLevel,
   gameData,
   numberRepeats,
-  numberOfGameStates,
+  //numberOfGameStates,
   paramName,
   possibleValues
 ) => {
@@ -64,10 +64,11 @@ const populateParams = (
 
 // Returns an array of audio file/square number pairs for the next game
 // Some should be repeats and some should be random but NOT repeats
-export const getGameParams = () => {
+export const getGameParams = nLevel => {
+  // TODO CHASE nLevel around
   const percentRepeats = [0.25, 0.3, 0.35, 0.4];
-  const nLevel = 2;
-  const numberOfGameStates = 10; //20;
+  //const nLevel = 2;
+  const numberOfGameStates = 20; //10;
   let gameData = [];
   for (let i = 0; i < numberOfGameStates; i++) {
     gameData.push({
@@ -83,7 +84,7 @@ export const getGameParams = () => {
     nLevel,
     gameData,
     numberRepeats,
-    numberOfGameStates,
+    //numberOfGameStates,
     'squareNumber',
     squareNumbers
   );
@@ -92,7 +93,7 @@ export const getGameParams = () => {
     nLevel,
     gameData,
     numberRepeats,
-    numberOfGameStates,
+    //numberOfGameStates,
     'audio',
     audioFiles
   );
@@ -100,7 +101,7 @@ export const getGameParams = () => {
   // Add dummy values as last element, values that can't match nBack values
   gameData.push({
     audio: 'empty1928374', // anything that won't match audio files
-    squareNumber: 201  // any # not 1-9
+    squareNumber: 201 // any # not 1-9
   });
 
   console.log('gameData', gameData);

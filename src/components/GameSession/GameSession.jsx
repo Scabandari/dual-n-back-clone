@@ -73,7 +73,7 @@ const GameSession = props => {
   });
 
   useEffect(() => {
-    updateGameParams();
+    updateGameParams(nLevel);
   }, []); // todo think about when to run this
 
   // Called when Game Session finishes, clean up
@@ -230,13 +230,13 @@ const GameSession = props => {
           onClick={handleClickVisual}
           className='game-button'
           icon={'eye'}
-          //positive={squareNumber === nBackSquares[nLevel]}
+          positive={squareNumber === nBackSquares[nLevel]}
         />
         <Button
           onClick={handleClickAudio}
           className='game-button'
           icon={'comment'}
-          //positive={soundFile === nBackAudio[nLevel]}
+          positive={soundFile === nBackAudio[nLevel]}
         />
       </div>
       <Link to='/profile'>

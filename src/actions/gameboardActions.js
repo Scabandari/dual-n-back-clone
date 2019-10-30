@@ -24,8 +24,8 @@ export const lightenSquare = squareNumber => async dispatch => {
   });
 };
 
-export const updateGameParams = () => {
-  const params = getGameParams();
+export const updateGameParams = (nLevel) => {
+  const params = getGameParams(nLevel);
   return {
     type: UPDATE_GAME_STATES,
     payload: params

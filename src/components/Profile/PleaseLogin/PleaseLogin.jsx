@@ -26,4 +26,3 @@ PleaseLogin.propTypes = {};
 
 export default PleaseLogin;
 
-//onClick={() => setShowAuthMsg(!showAuthMsg)}
