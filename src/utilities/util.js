@@ -107,3 +107,19 @@ export const getGameParams = nLevel => {
   console.log('gameData', gameData);
   return gameData;
 };
+
+// export const getServerEndPoint = () => {
+//     const {
+//         REACT_APP_DEV_MODE,
+//         REACT_APP_DEV_SERVER_ENDPOINT,
+//         REACT_APP_PROD_SERVER_ENDPOINT
+//     } = process.env;
+
+//     const dev_mode = JSON.stringify(REACT_APP_DEV_MODE) === JSON.stringify("true");
+
+//     const myBackend =
+//         dev_mode ?
+//             REACT_APP_DEV_SERVER_ENDPOINT :
+//             REACT_APP_PROD_SERVER_ENDPOINT;
+//     return myBackend;
+// };

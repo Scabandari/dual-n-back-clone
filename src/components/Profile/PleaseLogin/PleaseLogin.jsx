@@ -14,7 +14,9 @@ const PleaseLogin = () => {
             <br /> Signing in will let you track your progress.
           </p>
           <a href={'/dnbc/auth/google'}>
-            <Button primary>Google Sign In</Button>
+            <Button color='google plus'>
+              <Icon name='google' /> Sign In
+            </Button>
           </a>
         </div>
       </Segment>
@@ -25,4 +27,3 @@ const PleaseLogin = () => {
 PleaseLogin.propTypes = {};
 
 export default PleaseLogin;
-

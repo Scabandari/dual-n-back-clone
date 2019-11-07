@@ -25,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "aws s3 sync build/ s3://dual-n-back-clone --acl public-read",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
